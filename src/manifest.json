@@ -1,0 +1,26 @@
+{
+  "name": "andOTP",
+  "description": "Open source two-factor authentication for Android",
+  "version": "0.1.0",
+  "manifest_version": 2,
+  "permissions": [
+    "storage"
+  ],
+  "icons": {
+    "48": "icons/icon_48.png",
+    "128": "icons/icon_128.png"
+  },
+  "browser_action": {
+    "default_title": "andotp-extension",
+    "default_popup": "popup/popup.html"
+  },
+  "background": {
+    "scripts": [
+      "background.js"
+    ]
+  },
+  "options_ui": {
+    "page": "options/options.html",
+    "chrome_style": true
+  }
+}
