@@ -76,7 +76,6 @@ button {
 }
 
 svg {
-  fill: currentColor;
   height: 1.25rem;
   width: 1.25rem;
 }

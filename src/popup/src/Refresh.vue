@@ -17,15 +17,10 @@ export default {
 
 <style lang="scss" scoped>
 button {
-  color: inherit;
   transition: transform 0.3s;
 
   &:hover {
     transform: rotate(45deg);
   }
-}
-
-svg {
-  fill: currentColor;
 }
 </style>

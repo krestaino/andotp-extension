@@ -2,7 +2,10 @@
   <main>
     <header>
       <h1>andOTP</h1>
-      <Refresh :onRefresh="handleRefreshClick"/>
+      <div class="actions">
+        <Refresh :onRefresh="handleRefreshClick"/>
+        <Options/>
+      </div>
     </header>
     <section>
       <ul v-if="accounts.length">
@@ -26,6 +29,7 @@
 <script>
 import 'reset-css';
 import Refresh from './Refresh.vue';
+import Options from './Options.vue';
 import Icon from './Icon.vue';
 import Copy from './Copy.vue';
 
@@ -34,6 +38,7 @@ const OTPAuth = require('otpauth');
 export default {
   components: {
     Refresh,
+    Options,
     Icon,
     Copy,
   },
@@ -79,7 +84,7 @@ main {
   display: flex;
   flex-direction: column;
   font-family: 'Roboto', sans-serif;
-  min-height: 140px;
+  line-height: 1.35;
   min-width: 270px;
 
   section {
@@ -97,10 +102,12 @@ main {
     color: #fff;
     display: flex;
     justify-content: space-between;
-    padding: 0.5rem 1rem;
+    padding: 0.5rem 0.5rem 0.5rem 1rem;
   }
 
   ul {
+    width: 100%;
+
     li {
       background-color: #fff;
       border-radius: 4px;
@@ -126,7 +133,6 @@ main {
       .label {
         color: #666;
         font-size: 0.8rem;
-        line-height: 1.35;
         overflow: hidden;
         white-space: nowrap;
         max-width: 145px;
@@ -136,7 +142,7 @@ main {
   }
 
   .no-accounts {
-    padding-bottom: 1rem;
+    padding: 1rem 0;
   }
 
   a {
@@ -148,10 +154,24 @@ main {
     align-items: center;
     background-color: transparent;
     border: 0;
+    color: inherit;
     cursor: pointer;
     display: flex;
     justify-content: center;
     outline: 0;
+    padding: 0;
+  }
+
+  svg {
+    fill: currentColor;
+  }
+
+  .actions {
+    display: flex;
+
+    button + button {
+      margin-left: 0.5rem;
+    }
   }
 }
 </style>
