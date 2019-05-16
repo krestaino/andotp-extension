@@ -15,14 +15,15 @@ div {
   span {
     align-items: center;
     background-color: #aaa;
+    border-radius: 2px;
     color: #fff;
     display: flex;
     font-size: 1.25rem;
     font-weight: bold;
-    height: 2.15rem;
+    height: 38px;
     justify-content: center;
     text-transform: uppercase;
-    width: 2.15rem;
+    width: 38px;
   }
 }
 </style>

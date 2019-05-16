@@ -127,7 +127,6 @@ main {
       .secret {
         font-size: 1rem;
         font-weight: bold;
-        margin-bottom: 0.25rem;
       }
 
       .label {
