@@ -21,7 +21,7 @@
       <Button class="delete" @click="deleteAccounts">Delete</Button>
       <Button class="import">
         <span>Restore</span>
-        <input type="file" @change="loadImport">
+        <input type="file" ref="fileInput" @change="loadImport">
       </Button>
     </div>
   </main>
@@ -65,6 +65,7 @@ export default {
     },
     deleteAccounts() {
       chrome.storage.local.set({ accounts: [] }, () => {
+        this.$refs.fileInput.value = '';
         this.accounts = [];
       });
     },
