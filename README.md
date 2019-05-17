@@ -2,9 +2,8 @@
 
 Restore your backups and access your two-factor authentication tokens from your browser. No phone is required after you import the backup. Limited to plain-text JSON backups right now.
 
-[<img height=50 alt="Get it on Google Play" src="https://developer.chrome.com/webstore/images/ChromeWebStore_BadgeWBorder_v2_496x150.png" />](https://chrome.google.com/webstore/detail/andotp/apbpiclbhifcmlbhbhillogjkphjdamd)
-
 ![andOTP Extension Screenshot](./src/screenshots/large-1-transparent.png)
+[<img height=50 alt="Get it on Google Play" src="https://developer.chrome.com/webstore/images/ChromeWebStore_BadgeWBorder_v2_496x150.png" />](https://chrome.google.com/webstore/detail/andotp/apbpiclbhifcmlbhbhillogjkphjdamd)
 
 ## Download andOTP
 
@@ -36,14 +35,14 @@ To use this extension, you must restore a backup from the app.
 
 Left clicking the **andOTP Extension** icon will show a dropdown of all your accounts.
 
-Features right now include:
+**Features right now include:**
 
 - Copy to clipboard
 - Text search filter
 - Auto refresh tokens
 - No phone required after restoring backup
 
-Planned features:
+**Planned features:**
 
 - Add encrypted backup support
 - Add dark theme
