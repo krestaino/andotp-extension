@@ -6,7 +6,7 @@
         <Refresh :onRefresh="handleRefreshClick" />
         <Options />
       </div>
-      <div class="time-remaining active" :style="{ animationDuration, width }" v-on:animationend="handleAnimationEnd()" />
+      <div ref="timeRemaining" class="time-remaining" :style="{ animationDuration, width }" v-on:animationend="handleAnimationEnd()" />
     </header>
     <section>
       <ul v-if="accounts.length">
@@ -44,6 +44,7 @@ export default {
   data() {
     return {
       accounts: [],
+      animationActive: true,
       animationDuration: undefined,
       width: undefined,
     };
@@ -61,7 +62,12 @@ export default {
       chrome.runtime.openOptionsPage();
     },
     handleAnimationEnd() {
-      location.reload();
+      const { timeRemaining } = this.$refs;
+
+      timeRemaining.style.animation = 'none';
+      timeRemaining.offsetHeight;
+      timeRemaining.style.animation = null;
+      this.setAnimtion();
     },
     getAccounts() {
       chrome.storage.local.get(['accounts'], result => {
@@ -89,6 +95,11 @@ export default {
 </script>
 
 <style lang="scss">
+::selection {
+  background-color: #69be68;
+  color: #fff;
+}
+
 main {
   background-color: #f1f1f1;
   color: #444;
@@ -117,16 +128,14 @@ main {
     position: relative;
 
     .time-remaining {
+      animation-iteration-count: infinite;
+      animation: linear 0s 1 shrink;
       background-color: #fdca00;
       bottom: 0;
       height: 3px;
       left: 0;
       position: absolute;
       width: 100%;
-
-      &.active {
-        animation: linear 0s 1 shrink;
-      }
 
       @keyframes shrink {
         0% {
