@@ -12,7 +12,7 @@ Restore your backups and access your two-factor authentication tokens from your 
 
 ## Setup Extension
 
-To use this extension, you must restore a backup using the app. To make a back up:
+To use this extension, you must restore a backup using the app. To make a backup:
 
 1. Open the options menu
 1. Tap **Backup**
