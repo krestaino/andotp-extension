@@ -1,7 +1,7 @@
 {
   "name": "andotp-extension",
   "description": "Open source two-factor authentication for Android",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "",
   "scripts": {
     "lint": "eslint --ext .js,.vue src",
