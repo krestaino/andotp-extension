@@ -16,7 +16,7 @@
   },
   "dependencies": {
     "aes4js": "^1.0.0",
-    "otpauth": "^3.2.3",
+    "otplib": "^11.0.0",
     "reset-css": "^4.0.1",
     "vue": "^2.6.10",
     "webextension-polyfill": "^0.3.1"
@@ -50,7 +50,7 @@
     "mini-css-extract-plugin": "^0.4.4",
     "node-sass": "^4.9.3",
     "prettier": "^1.14.3",
-    "pretty-quick": "^1.8.0",
+    "pretty-quick": "^1.10.0",
     "sass-loader": "^7.1.0",
     "vue-loader": "^15.4.2",
     "vue-template-compiler": "^2.6.10",

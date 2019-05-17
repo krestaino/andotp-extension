@@ -1,9 +1,7 @@
 <template>
   <main>
     <header>
-      <div
-        class="tip"
-      >Restore accounts using a backup from the app. Limited to plain-text JSON files right now.</div>
+      <div class="tip">Restore accounts using a backup from the app. Limited to plain-text JSON files right now.</div>
       <h1 v-if="accounts.length">
         <span>{{ accounts.length }}</span>
         <span>&nbsp;account</span>
@@ -21,7 +19,7 @@
       <Button class="delete" @click="deleteAccounts">Delete</Button>
       <Button class="import">
         <span>Restore</span>
-        <input type="file" ref="fileInput" @change="loadImport">
+        <input type="file" ref="fileInput" @change="loadImport" />
       </Button>
     </div>
   </main>

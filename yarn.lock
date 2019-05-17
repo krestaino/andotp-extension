@@ -4483,10 +4483,12 @@ osenv@0, osenv@^0.1.4:
     os-homedir "^1.0.0"
     os-tmpdir "^1.0.0"
 
-otpauth@^3.2.3:
-  version "3.2.3"
-  resolved "https://registry.yarnpkg.com/otpauth/-/otpauth-3.2.3.tgz#718a5ac49272c6960f8fb57e09734afb83426f76"
-  integrity sha512-g65nzRWzB/VEJcsJQzoRuL3/quPM7FG4rfJmIiTIp8NdzV9wUz1iQt25lAJ+dcRcH2aXBXSZPmIYJczNaTS0IA==
+otplib@^11.0.0:
+  version "11.0.0"
+  resolved "https://registry.yarnpkg.com/otplib/-/otplib-11.0.0.tgz#1b8b8691184e6022dac0b569ebd104c1e5451498"
+  integrity sha512-B9qxrYj0FU22nF39XOcKiK+yHdeg4uoensQQsRRlVnGJ26jugZNmJS2Wc9VinR+SjTfVpjDhzxZzpcXzlRkk5Q==
+  dependencies:
+    thirty-two "1.0.2"
 
 p-defer@^1.0.0:
   version "1.0.0"
@@ -5049,7 +5051,7 @@ prettier@^1.14.3:
   resolved "https://registry.yarnpkg.com/prettier/-/prettier-1.17.1.tgz#ed64b4e93e370cb8a25b9ef7fef3e4fd1c0995db"
   integrity sha512-TzGRNvuUSmPgwivDqkZ9tM/qTGW9hqDKWOE9YHiyQdixlKbv7kvEqsmDPrcHJTKwthU774TQwZXVtaQ/mMsvjg==
 
-pretty-quick@^1.8.0:
+pretty-quick@^1.10.0:
   version "1.10.0"
   resolved "https://registry.yarnpkg.com/pretty-quick/-/pretty-quick-1.10.0.tgz#d86cc46fe92ed8cfcfba6a082ec5949c53858198"
   integrity sha512-uNvm2N3UWmnZRZrClyQI45hIbV20f5BpSyZY51Spbvn4APp9+XLyX4bCjWRGT3fGyVyQ/2/iw7dbQq1UUaq7SQ==
@@ -6102,6 +6104,11 @@ text-table@^0.2.0:
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/text-table/-/text-table-0.2.0.tgz#7f5ee823ae805207c00af2df4a84ec3fcfa570b4"
   integrity sha1-f17oI66AUgfACvLfSoTsP8+lcLQ=
+
+thirty-two@1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/thirty-two/-/thirty-two-1.0.2.tgz#4ca2fffc02a51290d2744b9e3f557693ca6b627a"
+  integrity sha1-TKL//AKlEpDSdEueP1V2k8prYno=
 
 through2@^2.0.0:
   version "2.0.5"

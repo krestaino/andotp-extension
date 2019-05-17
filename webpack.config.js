@@ -1,4 +1,5 @@
 const webpack = require('webpack');
+const path = require('path');
 const ejs = require('ejs');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
@@ -8,13 +9,13 @@ const { version } = require('./package.json');
 
 const config = {
   mode: process.env.NODE_ENV,
-  context: __dirname + '/src',
+  context: path.join(__dirname, '/src'),
   entry: {
     'popup/popup': './popup/popup.js',
     'options/options': './options/options.js',
   },
   output: {
-    path: __dirname + '/dist',
+    path: path.join(__dirname, '/dist'),
     filename: '[name].js',
   },
   resolve: {
@@ -61,6 +62,7 @@ const config = {
       filename: '[name].css',
     }),
     new CopyWebpackPlugin([
+      { from: '../node_modules/otplib/otplib-browser.js', to: 'popup/' },
       { from: 'icons', to: 'icons', ignore: ['icon.xcf'] },
       { from: 'popup/popup.html', to: 'popup/popup.html', transform: transformHtml },
       { from: 'options/options.html', to: 'options/options.html', transform: transformHtml },

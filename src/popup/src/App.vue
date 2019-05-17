@@ -3,19 +3,20 @@
     <header>
       <h1>andOTP</h1>
       <div class="actions">
-        <Refresh :onRefresh="handleRefreshClick"/>
-        <Options/>
+        <Refresh :onRefresh="handleRefreshClick" />
+        <Options />
       </div>
+      <div class="time-remaining active" :style="{ animationDuration, width }" v-on:animationend="handleAnimationEnd()" />
     </header>
     <section>
       <ul v-if="accounts.length">
         <li v-for="account in accounts" :key="account.label">
-          <Icon :letter="account.label.charAt(0)"/>
+          <Icon :letter="account.label.charAt(0)" />
           <div class="text">
             <div class="secret">{{ getCode(account.secret) }}</div>
             <div class="label">{{ account.label }}</div>
           </div>
-          <Copy :code="getCode(account.secret)"/>
+          <Copy :code="getCode(account.secret)" />
         </li>
       </ul>
       <div class="no-accounts" v-else>
@@ -33,8 +34,6 @@ import Options from './Options.vue';
 import Icon from './Icon.vue';
 import Copy from './Copy.vue';
 
-const OTPAuth = require('otpauth');
-
 export default {
   components: {
     Refresh,
@@ -45,10 +44,13 @@ export default {
   data() {
     return {
       accounts: [],
+      animationDuration: undefined,
+      width: undefined,
     };
   },
   mounted() {
     this.getAccounts();
+    this.setAnimtion();
   },
   methods: {
     handleRefreshClick() {
@@ -58,20 +60,29 @@ export default {
     handleOptionsClick() {
       chrome.runtime.openOptionsPage();
     },
+    handleAnimationEnd() {
+      location.reload();
+    },
     getAccounts() {
       chrome.storage.local.get(['accounts'], result => {
         this.accounts = result.accounts.sort((a, b) => a.label.localeCompare(b.label));
       });
     },
     getCode(secret) {
-      const totp = new OTPAuth.TOTP({
-        algorithm: 'SHA1',
-        digits: 6,
-        period: 30,
-        secret: OTPAuth.Secret.fromB32(secret),
-      });
-
-      return totp.generate();
+      return window.otplib.authenticator.generate(secret);
+    },
+    getTimeRemaining() {
+      return window.otplib.authenticator.timeRemaining();
+    },
+    getWidth() {
+      return (this.getTimeRemaining() / 30) * 100 + '%';
+    },
+    getAnimationDuration() {
+      return this.getTimeRemaining() + 's';
+    },
+    setAnimtion() {
+      this.width = this.getWidth();
+      this.animationDuration = this.getAnimationDuration();
     },
   },
 };
@@ -103,6 +114,29 @@ main {
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 0.5rem 0.5rem 1rem;
+    position: relative;
+
+    .time-remaining {
+      background-color: #fdca00;
+      bottom: 0;
+      height: 3px;
+      left: 0;
+      position: absolute;
+      width: 100%;
+
+      &.active {
+        animation: linear 0s 1 shrink;
+      }
+
+      @keyframes shrink {
+        0% {
+          width: 'inherit';
+        }
+        100% {
+          width: 0;
+        }
+      }
+    }
   }
 
   ul {
