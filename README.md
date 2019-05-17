@@ -41,6 +41,7 @@ Features right now include:
 - Copy to clipboard
 - Text search filter
 - Auto refresh tokens
+- No phone is required after restoring a backup
 
 Planned features:
 
