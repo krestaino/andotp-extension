@@ -44,6 +44,7 @@ Left clicking the **andOTP Extension** icon will show a dropdown of all your acc
 
 **Planned features:**
 
+- Firefox and Edge versions
 - Add encrypted backup support
 - Add dark theme
 - Add thumbnail support
