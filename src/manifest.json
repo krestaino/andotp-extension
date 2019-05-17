@@ -1,5 +1,6 @@
 {
   "name": "andOTP Extension",
+  "short_name": "andOTP",
   "description": "Open source two-factor authentication for Android",
   "version": "0.3.0",
   "manifest_version": 2,
