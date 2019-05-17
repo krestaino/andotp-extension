@@ -14,7 +14,7 @@ Restore your backups and access your two-factor authentication tokens from your 
 
 ## Setup
 
-To use this extension, you must restore a backup using the app.
+To use this extension, you must restore a backup from the app.
 
 ### andOTP Backup
 
