@@ -71,9 +71,16 @@ export default {
 };
 </script>
 
+<style lang="scss">
+html {
+  background-color: #f1f1f1;
+  --primary: #388e3c;
+  --accent: #fdca00;
+}
+</style>
+
 <style lang="scss" scoped>
 main {
-  background-color: #f1f1f1;
   color: #444;
   font-family: 'Roboto', sans-serif;
   line-height: 1.35;
@@ -101,13 +108,14 @@ main {
 
   .import {
     position: relative;
-    background: #69be68;
-    border-color: #69be68 !important;
+    background: var(--primary);
+    border-color: var(--primary) !important;
     color: #fff;
 
     &:hover {
-      background: #73d671;
-      color: #fff;
+      background: var(--accent);
+      border-color: var(--accent) !important;
+      color: #000;
     }
 
     span {

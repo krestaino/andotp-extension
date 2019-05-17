@@ -1,15 +1,16 @@
 <template>
   <main>
     <header>
-      <h1>andOTP</h1>
-      <div class="actions">
+      <h1 v-if="!searchActive">andOTP</h1>
+      <div class="actions" :style="{ flex: searchActive ? 1 : 0 }">
+        <Search :searchActive="searchActive" @toggleSearchActive="searchActive = !searchActive" @onSearchQueryChange="query => (searchQuery = query)" />
         <Options />
       </div>
       <div ref="timeRemaining" class="time-remaining" :style="{ animationDuration, width }" v-on:animationend="handleAnimationEnd()" />
     </header>
     <section>
       <ul v-if="accounts.length">
-        <li v-for="account in accounts" :key="account.label">
+        <li v-for="account in accountFilter || accounts" :key="account.label">
           <Icon :letter="account.label.charAt(0)" />
           <div class="text">
             <div class="secret">{{ getCode(account.secret) }}</div>
@@ -28,21 +29,31 @@
 
 <script>
 import 'reset-css';
+import Search from './Search.vue';
 import Options from './Options.vue';
 import Icon from './Icon.vue';
 import Copy from './Copy.vue';
 
 export default {
   components: {
+    Search,
     Options,
     Icon,
     Copy,
   },
+  computed: {
+    accountFilter() {
+      if (this.searchActive) {
+        return this.accounts.filter(account => account.label.toLowerCase().includes(this.searchQuery.toLowerCase()));
+      }
+    },
+  },
   data() {
     return {
       accounts: [],
-      animationActive: true,
       animationDuration: undefined,
+      searchActive: false,
+      searchQuery: '',
       width: undefined,
     };
   },
@@ -50,11 +61,14 @@ export default {
     this.getAccounts();
     this.setAnimtion();
   },
-  methods: {
-    handleRefreshClick() {
-      this.accounts = [];
-      this.getAccounts();
+  watch: {
+    accounts() {
+      if (this.accounts.length > 8) {
+        document.querySelector('html').style.height = '600px';
+      }
     },
+  },
+  methods: {
     handleOptionsClick() {
       chrome.runtime.openOptionsPage();
     },
@@ -92,19 +106,33 @@ export default {
 </script>
 
 <style lang="scss">
+html {
+  background-color: #f1f1f1;
+  box-sizing: border-box;
+  overflow-y: scroll;
+  width: 270px;
+  --primary: #388e3c;
+  --accent: #fdca00;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
 ::selection {
-  background-color: #69be68;
+  background-color: var(--primary);
   color: #fff;
 }
 
 main {
-  background-color: #f1f1f1;
   color: #444;
   display: flex;
   flex-direction: column;
   font-family: 'Roboto', sans-serif;
   line-height: 1.35;
-  min-width: 270px;
+  width: 100%;
 
   section {
     align-items: center;
@@ -117,17 +145,23 @@ main {
 
   header {
     align-items: center;
-    background-color: #69be68;
+    background-color: var(--primary);
     color: #fff;
     display: flex;
     justify-content: space-between;
     padding: 0.5rem 0.5rem 0.5rem 1rem;
     position: relative;
 
+    button {
+      &:hover {
+        color: var(--accent);
+      }
+    }
+
     .time-remaining {
       animation-iteration-count: infinite;
       animation: linear 0s 1 shrink;
-      background-color: #fdca00;
+      background-color: var(--accent);
       bottom: 0;
       height: 3px;
       left: 0;
@@ -185,7 +219,7 @@ main {
   }
 
   a {
-    color: #69be68;
+    color: var(--primary);
     font-weight: bold;
   }
 
@@ -199,6 +233,7 @@ main {
     justify-content: center;
     outline: 0;
     padding: 0;
+    transition: 0.3s;
   }
 
   svg {
@@ -207,6 +242,11 @@ main {
 
   .actions {
     display: flex;
+    justify-content: space-between;
+
+    button {
+      padding: 0.25rem;
+    }
 
     button + button {
       margin-left: 0.5rem;

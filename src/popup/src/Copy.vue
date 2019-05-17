@@ -47,7 +47,7 @@ button {
   margin-left: 1rem;
 
   &:hover {
-    color: #69be68;
+    color: #388e3c;
   }
 }
 
