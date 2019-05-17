@@ -3,7 +3,6 @@
     <header>
       <h1>andOTP</h1>
       <div class="actions">
-        <Refresh :onRefresh="handleRefreshClick" />
         <Options />
       </div>
       <div ref="timeRemaining" class="time-remaining" :style="{ animationDuration, width }" v-on:animationend="handleAnimationEnd()" />
@@ -29,14 +28,12 @@
 
 <script>
 import 'reset-css';
-import Refresh from './Refresh.vue';
 import Options from './Options.vue';
 import Icon from './Icon.vue';
 import Copy from './Copy.vue';
 
 export default {
   components: {
-    Refresh,
     Options,
     Icon,
     Copy,
