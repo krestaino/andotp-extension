@@ -1,11 +1,9 @@
 {
-  "name": "andOTP",
+  "name": "andOTP Extension",
   "description": "Open source two-factor authentication for Android",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "manifest_version": 2,
-  "permissions": [
-    "storage"
-  ],
+  "permissions": ["storage"],
   "icons": {
     "48": "icons/icon_48.png",
     "128": "icons/icon_128.png"
